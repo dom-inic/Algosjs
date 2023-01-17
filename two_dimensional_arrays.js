@@ -67,6 +67,15 @@ function Grades(){
     }
 }
 
-let 
+let studentGrades = new Grades()
+
+studentGrades.add(40);
+studentGrades.add(60);
+studentGrades.add(40);
+studentGrades.add(80);
+studentGrades.add(70);
+
+studentGrades.average();
+
 
 
