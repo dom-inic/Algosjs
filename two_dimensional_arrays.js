@@ -78,4 +78,25 @@ studentGrades.add(70);
 studentGrades.average();
 
 
+// creating a two dimensional array better  approach 
+
+const matrix = (numrows, numcols, ...values) => {
+    let arr = [];
+    for (let i = 0; i < numrows; ++i){
+        let columns = [];
+        for (let j =0; j < numcols; ++j){
+            for (let arg of values){
+                columns[j] = arg;
+            }
+        }
+        arr[i] = columns;
+    }
+    return arr;
+}
+
+
+
+
+
+
 
