@@ -95,7 +95,43 @@ const matrix = (numrows, numcols, ...values) => {
 }
 
 
+class weekTemps {
+    constructor() {
+        this.datastore = [];
+        this.add = add;
+        this.average = average;
 
+
+        function add(temp) {
+            this.datastore.push(temp);
+        }
+
+        function average() {
+            let total = 0;
+
+            for (let i = 0; i < this.datastore.length; ++i) {
+                total += this.datastore[i];
+            }
+            return total / this.datastore.length;
+        }
+    }
+}
+
+class singleWord {
+    constructor() {
+        this.datastore = [];
+
+        function addWord(word) {
+            this.datastore.push(word);
+        }
+
+        function sentence() {
+            this.datastore.reduce((prevvalue, currvalue) => {
+                return prevvalue + " " + currvalue;
+            });
+        }
+    }
+}
 
 
 
