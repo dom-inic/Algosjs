@@ -94,16 +94,43 @@ const matrix = (numrows, numcols, ...values) => {
     return arr;
 }
 
-
+// modifying to take in a two dimensional array
 class weekTemps {
     constructor() {
         this.datastore = [];
-        this.add = add;
+        this.addWeeks = addWeeks;
         this.average = average;
+        this.addData = addData;
+        this.addValue = addValue;
 
 
-        function add(temp) {
-            this.datastore.push(temp);
+        function addWeeks(weeks) {
+            for (let i =0; i < weeks; ++i ){
+                this.datastore[i] = [];
+            }
+            return this.datastore;
+        }
+
+        function addData(week, ...values){
+            if (!this.datastore[week]){
+                this.datastore[week] = []
+            }
+            values.forEach((value, col)=> {
+                this.addValue(week, col, value);
+            });
+            return this.datastore;
+
+        }
+
+        function addValue(week,col,value){
+            if (!this.datastore[week]){
+                this.datastore[week] = [];
+            }
+            this.datastore[week][col] = value
+        }
+
+        function getMonthlyAverage(){
+            
         }
 
         function average() {
@@ -120,18 +147,59 @@ class weekTemps {
 class singleWord {
     constructor() {
         this.datastore = [];
+        }
 
-        function addWord(word) {
+        addWord(word) {
             this.datastore.push(word);
         }
 
-        function sentence() {
-            this.datastore.reduce((prevvalue, currvalue) => {
+        sentence() {
+            return this.datastore.reduce((prevvalue, currvalue) => {
                 return prevvalue + " " + currvalue;
             });
         }
+}
+
+class TwoDimArray {
+    constructor() {
+        this.datastore = [];
+    }
+
+    addRow(numRows) {
+        for (let i = 0; i < numRows; i++) {
+            this.datastore[i] = [];
+        }
+        return this.datastore;
+    }
+
+    addValues(row, ...values) {
+        if (!this.datastore[row]) {
+            this.datastore[row] = [];
+        }
+        values.forEach((value, col) => {
+            this.addValue(row, col, value);
+        });
+        return this.datastore;
+    }
+
+    addValue(row, col, value) {
+        if (!this.datastore[row]) {
+            this.datastore[row] = [];
+        }
+        return this.datastore[row][col] = value;
+    }
+
+    getValue(row, col) {
+        return this.datastore[row][col];
     }
 }
+
+
+
+
+
+
+
 
 
 
