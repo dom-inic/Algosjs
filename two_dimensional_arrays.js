@@ -102,6 +102,10 @@ class weekTemps {
         this.average = average;
         this.addData = addData;
         this.addValue = addValue;
+        this.getMonthlyAverage = getMonthlyAverage;
+        this.getSpecificWeekAverage = getSpecificWeekAverage;
+        this.getAllWeeksAverage = getAllWeeksAverage;
+        this.getSpecificTemp = getSpecificTemp;
 
 
         function addWeeks(weeks) {
@@ -130,16 +134,38 @@ class weekTemps {
         }
 
         function getMonthlyAverage(){
-            
+            for(let row = 0; row < this.datastore.length; ++row){
+                for (let col = 0; col < this.datastore[row].length; ++col){
+                    total += this.datastore[row][col]
+                    average = total / this.datastore.length
+                }
+            }
+            return average;
+
         }
 
-        function average() {
-            let total = 0;
+        function getSpecificWeekAverage(week){
+            this.datastore[week].reduce((prevvalue, currvalue)=> {
+                total = prevvalue + currvalue;
+                average = total / this.datastore[week].length;
+                return average;
+            })
+        }
 
-            for (let i = 0; i < this.datastore.length; ++i) {
-                total += this.datastore[i];
+        function getAllWeeksAverage(){
+            for(let row = 0; row < this.datastore.length; ++row){
+                for(let col =0; col < this.datastore[row].length; ++col){
+                    total += this.datastore[row][col];
+                }
+
+                average = total / this.datastore[row].length
+                return console.log("week" + parseInt(row + 1) + " total temp"  +total+ "and average" + average.toFixed(2));
             }
-            return total / this.datastore.length;
+        }
+
+        function getSpecificTemp(week, col){
+            return this.datastore[week][col]
+
         }
     }
 }
