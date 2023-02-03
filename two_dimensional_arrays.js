@@ -145,21 +145,30 @@ class weekTemps {
         }
 
         function getSpecificWeekAverage(week){
-            this.datastore[week].reduce((prevvalue, currvalue)=> {
-                total = prevvalue + currvalue;
+            let total = 0
+            let average = 0.0
+            for (let row = 0; row < this.datastore.length; ++row){
+                for(let col =0; col < this.datastore[week].length; ++col){
+                    total += this.datastore[week][col]
+                }
                 average = total / this.datastore[week].length;
-                return average;
-            })
+                console.log("This week average is" +average)
+                
+            }
         }
 
         function getAllWeeksAverage(){
+            let total = 0
+            let average = 0.0
             for(let row = 0; row < this.datastore.length; ++row){
                 for(let col =0; col < this.datastore[row].length; ++col){
                     total += this.datastore[row][col];
                 }
 
                 average = total / this.datastore[row].length
-                return console.log("week" + parseInt(row + 1) + " total temp"  +total+ "and average" + average.toFixed(2));
+                console.log("week" + parseInt(row + 1) + " total temp"  +total+ "and average" + average.toFixed(2));
+                total = 0
+                average = 0.0
             }
         }
 
