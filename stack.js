@@ -2,11 +2,6 @@ class Stack {
   constructor() {
     this.datastore = [];
     this.top = 0;
-    this.push = push;
-    this.pop = pop;
-    this.peek = peek;
-    this.length = this.length;
-    this.clear = clear;
   }
 
   push(element) {
